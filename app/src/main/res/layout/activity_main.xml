@@ -39,11 +39,12 @@
 
         <Switch
             android:id="@+id/bluetoothSwitch"
-            android:layout_width="170dp"
+            android:layout_width="175dp"
             android:layout_height="37dp"
-            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="70dp"
             android:fontFamily="sans-serif-condensed"
-            android:switchTextAppearance="@style/SwitchTextAppearance"
             android:text="Walking at night?"
             android:textColor="@android:color/white"
             android:textSize="18sp"
