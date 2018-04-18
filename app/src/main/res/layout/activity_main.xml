@@ -50,6 +50,29 @@
             android:textSize="18sp"
             tools:layout_editor_absoluteX="122dp"
             tools:layout_editor_absoluteY="119dp" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv2"
+            android:text="DIM"
+            android:layout_below="@id/bluetoothSwitch"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            ></TextView>
+
+        <Button
+            android:id="@+id/button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv2"
+            android:layout_marginLeft="20dp"
+            android:text="@string/brighten_lightpole_1"
+            android:textSize="15dp"
+            android:onClick="light_pole_1"
+            />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
