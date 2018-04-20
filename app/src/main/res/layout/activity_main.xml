@@ -70,7 +70,7 @@
             android:layout_marginLeft="20dp"
             android:text="@string/brighten_lightpole_1"
             android:textSize="15dp"
-            android:onClick="light_pole_1"
+            android:onClick="test"
             />
 
     </RelativeLayout>

@@ -1,7 +1,7 @@
 package com.example.eweber9858.bluetooth;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Switch;
 import android.view.View;
@@ -11,9 +11,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+import javax.net.ssl.HttpsURLConnection;
+
+public class MainActivity extends AppCompatActivity implements Runnable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +26,37 @@ public class MainActivity extends AppCompatActivity {
         if(simpleSwitch.isChecked()) {
             //add code to poll for bluetooth signal here
         }
-
+        test2();
         Button button = findViewById(R.id.button_id);
 
+    }
+
+    @Override
+    public void run() {
+        android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+        //TextView tv = findViewById(R.id.tv2);
+        URL url;
+        try {
+            url = new URL("https://www.google.com");
+            HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+            String rc = con.getCipherSuite();
+            //tv.setText(rc);
+        } catch (MalformedURLException e) {
+            //tv.setText("bad url");
+        }
+        catch (IOException e) {
+            //tv.setText("fail");
+        }
+    }
+
+    public void test(View view) {
+        Thread thread = new Thread();
+        thread.start();
+    }
+
+    public void test2() {
+        Thread thread = new Thread();
+        thread.start();
     }
 
     public void light_pole_1(View view) {
@@ -46,12 +77,16 @@ public class MainActivity extends AppCompatActivity {
 
         URL obj = new URL(POST_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setInstanceFollowRedirects(false);
         con.setRequestMethod("POST");
         con.setRequestProperty("User-Agent", USER_AGENT);
         con.setRequestProperty("Content-Type", CONTENT_TYPE);
         con.setRequestProperty("Host", HOST);
-
+        con.setConnectTimeout(5000);
+        con.setReadTimeout(5000);
         con.setDoOutput(true);
+        con.connect();
+
         OutputStream os = con.getOutputStream();
         byte [] body = BODY.getBytes("UTF-8");
         os.write(body);
